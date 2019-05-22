@@ -1,16 +1,16 @@
 # Thas\AnalyticsApi
 
-All URIs are relative to *http://api.analytics.localhost/api*
+All URIs are relative to *http://api.analytics.localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**learningAnalyticsCourseCoursePost**](AnalyticsApi.md#learningAnalyticsCourseCoursePost) | **POST** /learningAnalytics/course/{course} | 
+[**learningAnalyticsPost**](AnalyticsApi.md#learningAnalyticsPost) | **POST** /learning_analytics | 
 
 
 
-## learningAnalyticsCourseCoursePost
+## learningAnalyticsPost
 
-> learningAnalyticsCourseCoursePost($course, $one_of_view_event_grade_event_assignable_event_adaptive_event_session_event_navigation_event_tool_use_event_media_event)
+> learningAnalyticsPost($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event)
 
 
 
@@ -33,13 +33,12 @@ $apiInstance = new Thas\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$course = 'course_example'; // string | the course
-$one_of_view_event_grade_event_assignable_event_adaptive_event_session_event_navigation_event_tool_use_event_media_event = array(new \Thas\Model\array()); // OneOfViewEventGradeEventAssignableEventAdaptiveEventSessionEventNavigationEventToolUseEventMediaEvent[] | 
+$one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event = array(new \Thas\Model\array()); // OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[] | 
 
 try {
-    $apiInstance->learningAnalyticsCourseCoursePost($course, $one_of_view_event_grade_event_assignable_event_adaptive_event_session_event_navigation_event_tool_use_event_media_event);
+    $apiInstance->learningAnalyticsPost($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->learningAnalyticsCourseCoursePost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->learningAnalyticsPost: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -49,8 +48,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **course** | **string**| the course |
- **one_of_view_event_grade_event_assignable_event_adaptive_event_session_event_navigation_event_tool_use_event_media_event** | [**OneOfViewEventGradeEventAssignableEventAdaptiveEventSessionEventNavigationEventToolUseEventMediaEvent[]**](../Model/array.md)|  | [optional]
+ **one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event** | [**OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[]**](../Model/array.md)|  | [optional]
 
 ### Return type
 
