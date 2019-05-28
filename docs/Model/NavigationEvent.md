@@ -7,11 +7,12 @@ Name | Type | Description | Notes
 **id** | **string** | a unique id for this event | 
 **type** | **string** | the type of the event | 
 **actor** | **string** | string containing the userid of the actor | 
-**object** | **string** | the content identifier of the digital resource this event relates to. This is the course stream identifier | 
+**role** | **string** | string containing the role of the actor | [optional] 
+**object** | **string** | the content identifier of the digital resource this event relates to. This is the stream identifier. | [optional] 
 **event_time** | [**\DateTime**](\DateTime.md) | timestamp on which the event occured | 
 **session_id** | **string** | id of the session | [optional] 
 **action** | **string** | the specific action that is recorded | 
-**target** | **string** | Url of the page that is navigated to | [optional] 
+**target** | **string** | Url of the page that is navigated to | 
 **referer** | **string** | Url of the page that is navigated from | [optional] 
 **session** | **string** | The id of the session this event belongs to | [optional] 
 

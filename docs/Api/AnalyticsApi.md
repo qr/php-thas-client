@@ -1,6 +1,6 @@
 # Thas\AnalyticsApi
 
-All URIs are relative to *http://api.analytics.localhost/api/v1*
+All URIs are relative to *http://thas.thiememeulenhoff.x-ip.nl/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

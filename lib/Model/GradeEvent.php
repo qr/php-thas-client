@@ -13,7 +13,7 @@
 /**
  * Thieme Meulenhoff Analytics Data API
  *
- * First setup of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource.  A student is seen as an actor.
+ * First version of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The session event is used to register logins and logouts of the application  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  The item event is used to register the answer of a student to a question  The navigation event is used to register url navigations in the application  The media event is used to register media use like video and audio  The tooluseevent is used to register usage of external tools that are accessed from the application  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource. Most events have an object and a target. The object needs to be used to set the stream (streamcode) and the target to set the content element within the stream.  A student or teacher is seen as an actor.
  *
  * OpenAPI spec version: 0.8.0
  * 
@@ -36,6 +36,7 @@ use \Thas\ObjectSerializer;
  * GradeEvent Class Doc Comment
  *
  * @category Class
+ * @description A grade event registers the score that has been deermined when making an assignment. This may have been done by automated or by manual grading
  * @package  Thas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,12 +61,15 @@ class GradeEvent implements ModelInterface, ArrayAccess
         'id' => 'string',
         'type' => 'string',
         'actor' => 'string',
+        'role' => 'string',
         'object' => 'string',
         'event_time' => '\DateTime',
         'session_id' => 'string',
         'action' => 'string',
         'target' => 'string',
-        'score' => '\Thas\Model\Score'
+        'attempt' => 'int',
+        'max_result_score' => 'float',
+        'result_score' => 'float'
     ];
 
     /**
@@ -77,12 +81,15 @@ class GradeEvent implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'type' => null,
         'actor' => null,
+        'role' => null,
         'object' => null,
         'event_time' => 'date-time',
         'session_id' => null,
         'action' => null,
         'target' => null,
-        'score' => null
+        'attempt' => null,
+        'max_result_score' => null,
+        'result_score' => null
     ];
 
     /**
@@ -115,12 +122,15 @@ class GradeEvent implements ModelInterface, ArrayAccess
         'id' => 'id',
         'type' => 'type',
         'actor' => 'actor',
+        'role' => 'role',
         'object' => 'object',
         'event_time' => 'eventTime',
         'session_id' => 'sessionId',
         'action' => 'action',
         'target' => 'target',
-        'score' => 'score'
+        'attempt' => 'attempt',
+        'max_result_score' => 'maxResultScore',
+        'result_score' => 'resultScore'
     ];
 
     /**
@@ -132,12 +142,15 @@ class GradeEvent implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'type' => 'setType',
         'actor' => 'setActor',
+        'role' => 'setRole',
         'object' => 'setObject',
         'event_time' => 'setEventTime',
         'session_id' => 'setSessionId',
         'action' => 'setAction',
         'target' => 'setTarget',
-        'score' => 'setScore'
+        'attempt' => 'setAttempt',
+        'max_result_score' => 'setMaxResultScore',
+        'result_score' => 'setResultScore'
     ];
 
     /**
@@ -149,12 +162,15 @@ class GradeEvent implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'type' => 'getType',
         'actor' => 'getActor',
+        'role' => 'getRole',
         'object' => 'getObject',
         'event_time' => 'getEventTime',
         'session_id' => 'getSessionId',
         'action' => 'getAction',
         'target' => 'getTarget',
-        'score' => 'getScore'
+        'attempt' => 'getAttempt',
+        'max_result_score' => 'getMaxResultScore',
+        'result_score' => 'getResultScore'
     ];
 
     /**
@@ -207,7 +223,11 @@ class GradeEvent implements ModelInterface, ArrayAccess
     const TYPE_TOOLUSE = 'tooluse';
     const TYPE_MEDIA = 'media';
     const TYPE_ITEM = 'item';
-    const ACTION_GRADED = 'Graded';
+    const ROLE_TEACHER = 'teacher';
+    const ROLE_STUDENT = 'student';
+    const ROLE_ADMIN = 'admin';
+    const ACTION_GRADED_AUTOMATICALLY = 'GradedAutomatically';
+    const ACTION_GRADED_MANUALLY = 'GradedManually';
     
 
     
@@ -236,10 +256,25 @@ class GradeEvent implements ModelInterface, ArrayAccess
      *
      * @return string[]
      */
+    public function getRoleAllowableValues()
+    {
+        return [
+            self::ROLE_TEACHER,
+            self::ROLE_STUDENT,
+            self::ROLE_ADMIN,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getActionAllowableValues()
     {
         return [
-            self::ACTION_GRADED,
+            self::ACTION_GRADED_AUTOMATICALLY,
+            self::ACTION_GRADED_MANUALLY,
         ];
     }
     
@@ -262,12 +297,15 @@ class GradeEvent implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['actor'] = isset($data['actor']) ? $data['actor'] : null;
+        $this->container['role'] = isset($data['role']) ? $data['role'] : null;
         $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['event_time'] = isset($data['event_time']) ? $data['event_time'] : null;
         $this->container['session_id'] = isset($data['session_id']) ? $data['session_id'] : null;
         $this->container['action'] = isset($data['action']) ? $data['action'] : null;
         $this->container['target'] = isset($data['target']) ? $data['target'] : null;
-        $this->container['score'] = isset($data['score']) ? $data['score'] : null;
+        $this->container['attempt'] = isset($data['attempt']) ? $data['attempt'] : null;
+        $this->container['max_result_score'] = isset($data['max_result_score']) ? $data['max_result_score'] : null;
+        $this->container['result_score'] = isset($data['result_score']) ? $data['result_score'] : null;
     }
 
     /**
@@ -296,6 +334,14 @@ class GradeEvent implements ModelInterface, ArrayAccess
         if ($this->container['actor'] === null) {
             $invalidProperties[] = "'actor' can't be null";
         }
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'role', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
@@ -313,8 +359,17 @@ class GradeEvent implements ModelInterface, ArrayAccess
             );
         }
 
-        if ($this->container['score'] === null) {
-            $invalidProperties[] = "'score' can't be null";
+        if ($this->container['target'] === null) {
+            $invalidProperties[] = "'target' can't be null";
+        }
+        if ($this->container['attempt'] === null) {
+            $invalidProperties[] = "'attempt' can't be null";
+        }
+        if ($this->container['max_result_score'] === null) {
+            $invalidProperties[] = "'max_result_score' can't be null";
+        }
+        if ($this->container['result_score'] === null) {
+            $invalidProperties[] = "'result_score' can't be null";
         }
         return $invalidProperties;
     }
@@ -413,6 +468,39 @@ class GradeEvent implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets role
+     *
+     * @return string|null
+     */
+    public function getRole()
+    {
+        return $this->container['role'];
+    }
+
+    /**
+     * Sets role
+     *
+     * @param string|null $role string containing the role of the actor
+     *
+     * @return $this
+     */
+    public function setRole($role)
+    {
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!is_null($role) && !in_array($role, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'role', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['role'] = $role;
+
+        return $this;
+    }
+
+    /**
      * Gets object
      *
      * @return string
@@ -425,7 +513,7 @@ class GradeEvent implements ModelInterface, ArrayAccess
     /**
      * Sets object
      *
-     * @param string $object the content identifier of the digital resource this event relates to. This is the course stream identifier
+     * @param string $object the content identifier of the digital resource this event relates to. This is the stream identifier.
      *
      * @return $this
      */
@@ -520,7 +608,7 @@ class GradeEvent implements ModelInterface, ArrayAccess
     /**
      * Gets target
      *
-     * @return string|null
+     * @return string
      */
     public function getTarget()
     {
@@ -530,7 +618,7 @@ class GradeEvent implements ModelInterface, ArrayAccess
     /**
      * Sets target
      *
-     * @param string|null $target Content element within the object that is graded. This must be the contentidentifier that matches the standard.
+     * @param string $target Content element within the object that is graded. This must be the contentidentifier that matches the standard.
      *
      * @return $this
      */
@@ -542,25 +630,73 @@ class GradeEvent implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets score
+     * Gets attempt
      *
-     * @return \Thas\Model\Score
+     * @return int
      */
-    public function getScore()
+    public function getAttempt()
     {
-        return $this->container['score'];
+        return $this->container['attempt'];
     }
 
     /**
-     * Sets score
+     * Sets attempt
      *
-     * @param \Thas\Model\Score $score score
+     * @param int $attempt Id of the attempt, you can use the attempt count for this 1, 2, 3 ...
      *
      * @return $this
      */
-    public function setScore($score)
+    public function setAttempt($attempt)
     {
-        $this->container['score'] = $score;
+        $this->container['attempt'] = $attempt;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_result_score
+     *
+     * @return float
+     */
+    public function getMaxResultScore()
+    {
+        return $this->container['max_result_score'];
+    }
+
+    /**
+     * Sets max_result_score
+     *
+     * @param float $max_result_score Maximum possible score
+     *
+     * @return $this
+     */
+    public function setMaxResultScore($max_result_score)
+    {
+        $this->container['max_result_score'] = $max_result_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets result_score
+     *
+     * @return float
+     */
+    public function getResultScore()
+    {
+        return $this->container['result_score'];
+    }
+
+    /**
+     * Sets result_score
+     *
+     * @param float $result_score Acheived score
+     *
+     * @return $this
+     */
+    public function setResultScore($result_score)
+    {
+        $this->container['result_score'] = $result_score;
 
         return $this;
     }

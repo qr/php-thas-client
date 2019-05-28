@@ -12,7 +12,7 @@
 /**
  * Thieme Meulenhoff Analytics Data API
  *
- * First setup of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource.  A student is seen as an actor.
+ * First version of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The session event is used to register logins and logouts of the application  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  The item event is used to register the answer of a student to a question  The navigation event is used to register url navigations in the application  The media event is used to register media use like video and audio  The tooluseevent is used to register usage of external tools that are accessed from the application  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource. Most events have an object and a target. The object needs to be used to set the stream (streamcode) and the target to set the content element within the stream.  A student or teacher is seen as an actor.
  *
  * OpenAPI spec version: 0.8.0
  * 
@@ -81,7 +81,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'http://api.analytics.localhost/api/v1';
+    protected $host = 'http://thas.thiememeulenhoff.x-ip.nl/api/v1';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -436,12 +436,22 @@ class Configuration
     {
         return array(
           array(
-            "url" => "http://api.analytics.localhost/api/{basePath}",
-            "description" => "Development",
+            "url" => "http://thas.thiememeulenhoff.x-ip.nl/api/{basePath}",
+            "description" => "Test",
             "variables" => array(
               "basePath" => array(
                   "description" => "No description provided",
                   "default_value" => "v1",
+                )
+              )
+          ),
+          array(
+            "url" => "http://thas.localhost/api/{basePath}",
+            "description" => "Development",
+            "variables" => array(
+              "basePath" => array(
+                  "description" => "No description provided",
+                  "default_value" => "v1.0.0",
                 )
               )
           )

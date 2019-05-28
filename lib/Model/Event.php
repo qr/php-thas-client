@@ -13,7 +13,7 @@
 /**
  * Thieme Meulenhoff Analytics Data API
  *
- * First setup of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource.  A student is seen as an actor.
+ * First version of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The session event is used to register logins and logouts of the application  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  The item event is used to register the answer of a student to a question  The navigation event is used to register url navigations in the application  The media event is used to register media use like video and audio  The tooluseevent is used to register usage of external tools that are accessed from the application  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource. Most events have an object and a target. The object needs to be used to set the stream (streamcode) and the target to set the content element within the stream.  A student or teacher is seen as an actor.
  *
  * OpenAPI spec version: 0.8.0
  * 
@@ -61,6 +61,7 @@ class Event implements ModelInterface, ArrayAccess
         'id' => 'string',
         'type' => 'string',
         'actor' => 'string',
+        'role' => 'string',
         'object' => 'string',
         'event_time' => '\DateTime',
         'session_id' => 'string'
@@ -75,6 +76,7 @@ class Event implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'type' => null,
         'actor' => null,
+        'role' => null,
         'object' => null,
         'event_time' => 'date-time',
         'session_id' => null
@@ -110,6 +112,7 @@ class Event implements ModelInterface, ArrayAccess
         'id' => 'id',
         'type' => 'type',
         'actor' => 'actor',
+        'role' => 'role',
         'object' => 'object',
         'event_time' => 'eventTime',
         'session_id' => 'sessionId'
@@ -124,6 +127,7 @@ class Event implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'type' => 'setType',
         'actor' => 'setActor',
+        'role' => 'setRole',
         'object' => 'setObject',
         'event_time' => 'setEventTime',
         'session_id' => 'setSessionId'
@@ -138,6 +142,7 @@ class Event implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'type' => 'getType',
         'actor' => 'getActor',
+        'role' => 'getRole',
         'object' => 'getObject',
         'event_time' => 'getEventTime',
         'session_id' => 'getSessionId'
@@ -193,6 +198,9 @@ class Event implements ModelInterface, ArrayAccess
     const TYPE_TOOLUSE = 'tooluse';
     const TYPE_MEDIA = 'media';
     const TYPE_ITEM = 'item';
+    const ROLE_TEACHER = 'teacher';
+    const ROLE_STUDENT = 'student';
+    const ROLE_ADMIN = 'admin';
     
 
     
@@ -216,6 +224,20 @@ class Event implements ModelInterface, ArrayAccess
         ];
     }
     
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRoleAllowableValues()
+    {
+        return [
+            self::ROLE_TEACHER,
+            self::ROLE_STUDENT,
+            self::ROLE_ADMIN,
+        ];
+    }
+    
 
     /**
      * Associative array for storing property values
@@ -235,6 +257,7 @@ class Event implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['actor'] = isset($data['actor']) ? $data['actor'] : null;
+        $this->container['role'] = isset($data['role']) ? $data['role'] : null;
         $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['event_time'] = isset($data['event_time']) ? $data['event_time'] : null;
         $this->container['session_id'] = isset($data['session_id']) ? $data['session_id'] : null;
@@ -266,9 +289,14 @@ class Event implements ModelInterface, ArrayAccess
         if ($this->container['actor'] === null) {
             $invalidProperties[] = "'actor' can't be null";
         }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'role', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
+
         if ($this->container['event_time'] === null) {
             $invalidProperties[] = "'event_time' can't be null";
         }
@@ -369,9 +397,42 @@ class Event implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets role
+     *
+     * @return string|null
+     */
+    public function getRole()
+    {
+        return $this->container['role'];
+    }
+
+    /**
+     * Sets role
+     *
+     * @param string|null $role string containing the role of the actor
+     *
+     * @return $this
+     */
+    public function setRole($role)
+    {
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!is_null($role) && !in_array($role, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'role', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['role'] = $role;
+
+        return $this;
+    }
+
+    /**
      * Gets object
      *
-     * @return string
+     * @return string|null
      */
     public function getObject()
     {
@@ -381,7 +442,7 @@ class Event implements ModelInterface, ArrayAccess
     /**
      * Sets object
      *
-     * @param string $object the content identifier of the digital resource this event relates to. This is the course stream identifier
+     * @param string|null $object the content identifier of the digital resource this event relates to. This is the stream identifier.
      *
      * @return $this
      */
