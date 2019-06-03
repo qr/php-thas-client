@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **attempt** | **int** | Id of the attempt, you can use the attempt count for this 1, 2, 3 ... | 
 **max_result_score** | **float** | Maximum possible score | 
 **result_score** | **float** | Acheived score | 
+**actor_score** | **string** | Scored by the teacher or student | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -12,10 +12,9 @@ Name | Type | Description | Notes
 **event_time** | [**\DateTime**](\DateTime.md) | timestamp on which the event occured | 
 **session_id** | **string** | id of the session | [optional] 
 **action** | **string** | the specific action that is recorded | 
-**target** | **string** | Assignment within the object the ansewr belongs to. This must be the contentidentifier that matches the standard. | 
-**interaction_type** | **string** | Type of interaction | 
-**value** | **string** | Given answer | 
+**target** | **string** | Assignment within the object the answer belongs to. This must be the contentidentifier that matches the standard. | 
 **attempt** | **int** | Id of the attempt, you can use the attempt count for this 1, 2, 3 ... | 
+**answers** | [**\Thas\Model\Answer[]**](Answer.md) | Answers given by the student | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
