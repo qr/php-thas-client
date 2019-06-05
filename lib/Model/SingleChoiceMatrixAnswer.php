@@ -58,7 +58,7 @@ class SingleChoiceMatrixAnswer implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'match' => '\Thas\Model\Match'
+        'match' => '\Thas\Model\Match[]'
     ];
 
     /**
@@ -208,7 +208,7 @@ class SingleChoiceMatrixAnswer implements ModelInterface, ArrayAccess
     /**
      * Gets match
      *
-     * @return \Thas\Model\Match|null
+     * @return \Thas\Model\Match[]|null
      */
     public function getMatch()
     {
@@ -218,7 +218,7 @@ class SingleChoiceMatrixAnswer implements ModelInterface, ArrayAccess
     /**
      * Sets match
      *
-     * @param \Thas\Model\Match|null $match match
+     * @param \Thas\Model\Match[]|null $match match
      *
      * @return $this
      */

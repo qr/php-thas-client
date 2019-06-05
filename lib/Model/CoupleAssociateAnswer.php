@@ -58,7 +58,7 @@ class CoupleAssociateAnswer implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'couple_map' => '\Thas\Model\Match'
+        'couple_map' => '\Thas\Model\Match[]'
     ];
 
     /**
@@ -208,7 +208,7 @@ class CoupleAssociateAnswer implements ModelInterface, ArrayAccess
     /**
      * Gets couple_map
      *
-     * @return \Thas\Model\Match|null
+     * @return \Thas\Model\Match[]|null
      */
     public function getCoupleMap()
     {
@@ -218,7 +218,7 @@ class CoupleAssociateAnswer implements ModelInterface, ArrayAccess
     /**
      * Sets couple_map
      *
-     * @param \Thas\Model\Match|null $couple_map couple_map
+     * @param \Thas\Model\Match[]|null $couple_map couple_map
      *
      * @return $this
      */
