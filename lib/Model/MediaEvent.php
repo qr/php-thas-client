@@ -13,7 +13,7 @@
 /**
  * Thieme Meulenhoff Analytics Data API
  *
- * First version of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The session event is used to register logins and logouts of the application  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  The item event is used to register the answer of a student to a question  The navigation event is used to register url navigations in the application  The media event is used to register media use like video and audio  The tooluseevent is used to register usage of external tools that are accessed from the application  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource. Most events have an object and a target. The object needs to be used to set the stream (streamcode) and the target to set the content element within the stream.  A student is seen as an actor.
+ * First version of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The session event is used to register logins and logouts of the application  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assessment event is used to register the completion of an assignment. This information is transfered as an attempt.  The item event is used to register the answer of a student to a question  The navigation event is used to register url navigations in the application  The media event is used to register media use like video and audio  The tooluseevent is used to register usage of external tools that are accessed from the application  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource. Most events have an object and a target. The object needs to be used to set the stream (streamcode) and the target to set the content element within the stream.  A student is seen as an actor.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -206,7 +206,7 @@ class MediaEvent implements ModelInterface, ArrayAccess
 
     const TYPE_VIEW = 'view';
     const TYPE_GRADE = 'grade';
-    const TYPE_ASSESMENT = 'assesment';
+    const TYPE_ASSESSMENT = 'assessment';
     const TYPE_ADAPTIVE = 'adaptive';
     const TYPE_SESSION = 'session';
     const TYPE_NAVIGATION = 'navigation';
@@ -238,7 +238,7 @@ class MediaEvent implements ModelInterface, ArrayAccess
         return [
             self::TYPE_VIEW,
             self::TYPE_GRADE,
-            self::TYPE_ASSESMENT,
+            self::TYPE_ASSESSMENT,
             self::TYPE_ADAPTIVE,
             self::TYPE_SESSION,
             self::TYPE_NAVIGATION,

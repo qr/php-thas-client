@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## learningAnalytics
 
-> learningAnalytics($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event)
+> learningAnalytics($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event)
 
 
 
@@ -34,10 +34,10 @@ $apiInstance = new Thas\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event = array(new \Thas\Model\array()); // OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[] | 
+$one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event = array(new \Thas\Model\array()); // OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssessmentItemEvent[] | 
 
 try {
-    $apiInstance->learningAnalytics($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event);
+    $apiInstance->learningAnalytics($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->learningAnalytics: ', $e->getMessage(), PHP_EOL;
 }
@@ -49,7 +49,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event** | [**OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[]**](../Model/array.md)|  | [optional]
+ **one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event** | [**OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssessmentItemEvent[]**](../Model/array.md)|  | [optional]
 
 ### Return type
 

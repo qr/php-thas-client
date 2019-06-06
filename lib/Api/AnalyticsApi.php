@@ -12,7 +12,7 @@
 /**
  * Thieme Meulenhoff Analytics Data API
  *
- * First version of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The session event is used to register logins and logouts of the application  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assesment event is used to register the completion of an assignment. This information is transfered as an attempt.  The item event is used to register the answer of a student to a question  The navigation event is used to register url navigations in the application  The media event is used to register media use like video and audio  The tooluseevent is used to register usage of external tools that are accessed from the application  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource. Most events have an object and a target. The object needs to be used to set the stream (streamcode) and the target to set the content element within the stream.  A student is seen as an actor.
+ * First version of an API to exchange Learning Analytics. This API is based on events (inspired by Caliper Analytics® Specification, version 1.1) that are send to the api. We use a number of events.  The session event is used to register logins and logouts of the application  The view event is used to register page views for theory.  The grade event is used to register results of doing assignments. Such a result is modelled as a score.  The assessment event is used to register the completion of an assignment. This information is transfered as an attempt.  The item event is used to register the answer of a student to a question  The navigation event is used to register url navigations in the application  The media event is used to register media use like video and audio  The tooluseevent is used to register usage of external tools that are accessed from the application  Both theory and assignments are considered digital resources. An assignment is an assignable digital resource. Most events have an object and a target. The object needs to be used to set the stream (streamcode) and the target to set the content element within the stream.  A student is seen as an actor.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -118,29 +118,29 @@ class AnalyticsApi
     /**
      * Operation learningAnalytics
      *
-     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event (optional)
+     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssessmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event (optional)
      *
      * @throws \Thas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function learningAnalytics($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event = null)
+    public function learningAnalytics($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event = null)
     {
-        $this->learningAnalyticsWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event);
+        $this->learningAnalyticsWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event);
     }
 
     /**
      * Operation learningAnalyticsWithHttpInfo
      *
-     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event (optional)
+     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssessmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event (optional)
      *
      * @throws \Thas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function learningAnalyticsWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event = null)
+    public function learningAnalyticsWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event = null)
     {
-        $request = $this->learningAnalyticsRequest($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event);
+        $request = $this->learningAnalyticsRequest($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event);
 
         try {
             $options = $this->createHttpClientOption();
@@ -184,14 +184,14 @@ class AnalyticsApi
      *
      * 
      *
-     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event (optional)
+     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssessmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function learningAnalyticsAsync($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event = null)
+    public function learningAnalyticsAsync($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event = null)
     {
-        return $this->learningAnalyticsAsyncWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event)
+        return $this->learningAnalyticsAsyncWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -204,15 +204,15 @@ class AnalyticsApi
      *
      * 
      *
-     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event (optional)
+     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssessmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function learningAnalyticsAsyncWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event = null)
+    public function learningAnalyticsAsyncWithHttpInfo($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event = null)
     {
         $returnType = '';
-        $request = $this->learningAnalyticsRequest($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event);
+        $request = $this->learningAnalyticsRequest($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -240,12 +240,12 @@ class AnalyticsApi
     /**
      * Create request for operation 'learningAnalytics'
      *
-     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssesmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event (optional)
+     * @param  OneOfViewEventGradeEventAssignableEventSessionEventNavigationEventToolUseEventMediaEventAssessmentItemEvent[] $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function learningAnalyticsRequest($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event = null)
+    protected function learningAnalyticsRequest($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event = null)
     {
 
         $resourcePath = '/learning_analytics';
@@ -259,8 +259,8 @@ class AnalyticsApi
 
         // body params
         $_tempBody = null;
-        if (isset($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event)) {
-            $_tempBody = $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assesment_item_event;
+        if (isset($one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event)) {
+            $_tempBody = $one_of_view_event_grade_event_assignable_event_session_event_navigation_event_tool_use_event_media_event_assessment_item_event;
         }
 
         if ($multipart) {
