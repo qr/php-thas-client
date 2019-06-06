@@ -112,7 +112,6 @@ Class | Method | HTTP request | Description
  - [MultipleSelectAnswer](docs/Model/MultipleSelectAnswer.md)
  - [NavigationEvent](docs/Model/NavigationEvent.md)
  - [OpenQuestionAnswer](docs/Model/OpenQuestionAnswer.md)
- - [OpenQuestionAnswerUploadReference](docs/Model/OpenQuestionAnswerUploadReference.md)
  - [SequencingAnswer](docs/Model/SequencingAnswer.md)
  - [SessionEvent](docs/Model/SessionEvent.md)
  - [SingleChoiceMatrixAnswer](docs/Model/SingleChoiceMatrixAnswer.md)

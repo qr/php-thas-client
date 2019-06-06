@@ -58,6 +58,8 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'interaction_type' => 'string',
+        'target' => 'string',
         'selected_option_id' => 'string'
     ];
 
@@ -67,6 +69,8 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'interaction_type' => null,
+        'target' => null,
         'selected_option_id' => null
     ];
 
@@ -97,6 +101,8 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'interaction_type' => 'interactionType',
+        'target' => 'target',
         'selected_option_id' => 'selectedOptionId'
     ];
 
@@ -106,6 +112,8 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'interaction_type' => 'setInteractionType',
+        'target' => 'setTarget',
         'selected_option_id' => 'setSelectedOptionId'
     ];
 
@@ -115,6 +123,8 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'interaction_type' => 'getInteractionType',
+        'target' => 'getTarget',
         'selected_option_id' => 'getSelectedOptionId'
     ];
 
@@ -159,8 +169,53 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const INTERACTION_TYPE_QI_SINGLE_SELECT = 'QiSingleSelect';
+    const INTERACTION_TYPE_QI_MULTIPLE_SELECT = 'QiMultipleSelect';
+    const INTERACTION_TYPE_QI_DRAWING = 'QiDrawing';
+    const INTERACTION_TYPE_QI_TEXT_ENTRY = 'QiTextEntry';
+    const INTERACTION_TYPE_QI_TEXT_ENTRY_SELF_SCORE = 'QiTextEntrySelfScore';
+    const INTERACTION_TYPE_QI_GAP_MATCH = 'QiGapMatch';
+    const INTERACTION_TYPE_QI_GRAPHIC_GAP_MATCH = 'QiGraphicGapMatch';
+    const INTERACTION_TYPE_QI_COUPLE_ASSOCIATE = 'QiCoupleAssociate';
+    const INTERACTION_TYPE_QI_ACROSTIC_PUZZLE = 'QiAcrosticPuzzle';
+    const INTERACTION_TYPE_QI_OPEN_QUESTION = 'QiOpenQuestion';
+    const INTERACTION_TYPE_GRAPHIC_HOTSPOT = 'GraphicHotspot';
+    const INTERACTION_TYPE_GRAPHIC_ASSOCIATE = 'GraphicAssociate';
+    const INTERACTION_TYPE_QI_SEQUENCING = 'QiSequencing';
+    const INTERACTION_TYPE_QI_INLINE_CHOICE = 'QiInlineChoice';
+    const INTERACTION_TYPE_QI_SINGLE_CHOICE_MATRIX = 'QiSingleChoiceMatrix';
+    const INTERACTION_TYPE_QI_MULTIPLE_CHOICE_MATRIX = 'QiMultipleChoiceMatrix';
+    const INTERACTION_TYPE_QI_TEXT_HIGHLIGHT = 'QiTextHighlight';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getInteractionTypeAllowableValues()
+    {
+        return [
+            self::INTERACTION_TYPE_QI_SINGLE_SELECT,
+            self::INTERACTION_TYPE_QI_MULTIPLE_SELECT,
+            self::INTERACTION_TYPE_QI_DRAWING,
+            self::INTERACTION_TYPE_QI_TEXT_ENTRY,
+            self::INTERACTION_TYPE_QI_TEXT_ENTRY_SELF_SCORE,
+            self::INTERACTION_TYPE_QI_GAP_MATCH,
+            self::INTERACTION_TYPE_QI_GRAPHIC_GAP_MATCH,
+            self::INTERACTION_TYPE_QI_COUPLE_ASSOCIATE,
+            self::INTERACTION_TYPE_QI_ACROSTIC_PUZZLE,
+            self::INTERACTION_TYPE_QI_OPEN_QUESTION,
+            self::INTERACTION_TYPE_GRAPHIC_HOTSPOT,
+            self::INTERACTION_TYPE_GRAPHIC_ASSOCIATE,
+            self::INTERACTION_TYPE_QI_SEQUENCING,
+            self::INTERACTION_TYPE_QI_INLINE_CHOICE,
+            self::INTERACTION_TYPE_QI_SINGLE_CHOICE_MATRIX,
+            self::INTERACTION_TYPE_QI_MULTIPLE_CHOICE_MATRIX,
+            self::INTERACTION_TYPE_QI_TEXT_HIGHLIGHT,
+        ];
+    }
     
 
     /**
@@ -178,6 +233,8 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['interaction_type'] = isset($data['interaction_type']) ? $data['interaction_type'] : null;
+        $this->container['target'] = isset($data['target']) ? $data['target'] : null;
         $this->container['selected_option_id'] = isset($data['selected_option_id']) ? $data['selected_option_id'] : null;
     }
 
@@ -189,6 +246,14 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getInteractionTypeAllowableValues();
+        if (!is_null($this->container['interaction_type']) && !in_array($this->container['interaction_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'interaction_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -204,6 +269,63 @@ class SingleSelectAnswer implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets interaction_type
+     *
+     * @return string|null
+     */
+    public function getInteractionType()
+    {
+        return $this->container['interaction_type'];
+    }
+
+    /**
+     * Sets interaction_type
+     *
+     * @param string|null $interaction_type Type of interaction
+     *
+     * @return $this
+     */
+    public function setInteractionType($interaction_type)
+    {
+        $allowedValues = $this->getInteractionTypeAllowableValues();
+        if (!is_null($interaction_type) && !in_array($interaction_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'interaction_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['interaction_type'] = $interaction_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets target
+     *
+     * @return string|null
+     */
+    public function getTarget()
+    {
+        return $this->container['target'];
+    }
+
+    /**
+     * Sets target
+     *
+     * @param string|null $target Interaction within the assignment the answer belongs to. This must be the contentidentifier that matches the standard.
+     *
+     * @return $this
+     */
+    public function setTarget($target)
+    {
+        $this->container['target'] = $target;
+
+        return $this;
+    }
 
     /**
      * Gets selected_option_id

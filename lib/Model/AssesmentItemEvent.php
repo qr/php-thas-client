@@ -68,7 +68,7 @@ class AssesmentItemEvent implements ModelInterface, ArrayAccess
         'action' => 'string',
         'target' => 'string',
         'attempt' => 'int',
-        'answers' => '\Thas\Model\Answer[]'
+        'answers' => 'OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]'
     ];
 
     /**
@@ -642,7 +642,7 @@ class AssesmentItemEvent implements ModelInterface, ArrayAccess
     /**
      * Gets answers
      *
-     * @return \Thas\Model\Answer[]|null
+     * @return OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]|null
      */
     public function getAnswers()
     {
@@ -652,7 +652,7 @@ class AssesmentItemEvent implements ModelInterface, ArrayAccess
     /**
      * Sets answers
      *
-     * @param \Thas\Model\Answer[]|null $answers Answers given by the student
+     * @param OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]|null $answers Answers given by the student
      *
      * @return $this
      */

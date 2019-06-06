@@ -58,8 +58,7 @@ class Answer implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'interaction_type' => 'string',
-        'target' => 'string',
-        'value' => 'OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer'
+        'target' => 'string'
     ];
 
     /**
@@ -69,8 +68,7 @@ class Answer implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'interaction_type' => null,
-        'target' => null,
-        'value' => null
+        'target' => null
     ];
 
     /**
@@ -101,8 +99,7 @@ class Answer implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'interaction_type' => 'interactionType',
-        'target' => 'target',
-        'value' => 'value'
+        'target' => 'target'
     ];
 
     /**
@@ -112,8 +109,7 @@ class Answer implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'interaction_type' => 'setInteractionType',
-        'target' => 'setTarget',
-        'value' => 'setValue'
+        'target' => 'setTarget'
     ];
 
     /**
@@ -123,8 +119,7 @@ class Answer implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'interaction_type' => 'getInteractionType',
-        'target' => 'getTarget',
-        'value' => 'getValue'
+        'target' => 'getTarget'
     ];
 
     /**
@@ -234,7 +229,6 @@ class Answer implements ModelInterface, ArrayAccess
     {
         $this->container['interaction_type'] = isset($data['interaction_type']) ? $data['interaction_type'] : null;
         $this->container['target'] = isset($data['target']) ? $data['target'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -322,30 +316,6 @@ class Answer implements ModelInterface, ArrayAccess
     public function setTarget($target)
     {
         $this->container['target'] = $target;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer|null $value Given answer
-     *
-     * @return $this
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
 
         return $this;
     }

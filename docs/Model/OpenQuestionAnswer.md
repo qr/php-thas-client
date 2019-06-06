@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**interaction_type** | **string** | Type of interaction | [optional] 
+**target** | **string** | Interaction within the assignment the answer belongs to. This must be the contentidentifier that matches the standard. | [optional] 
 **user_text_input** | **string** | Answer as given by the student | [optional] 
-**upload_reference** | [**\Thas\Model\OpenQuestionAnswerUploadReference**](OpenQuestionAnswerUploadReference.md) |  | [optional] 
+**upload_reference** | **object** | Reference to the uploaded file | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
