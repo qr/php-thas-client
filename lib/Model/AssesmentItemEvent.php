@@ -68,7 +68,7 @@ class AssesmentItemEvent implements ModelInterface, ArrayAccess
         'action' => 'string',
         'target' => 'string',
         'attempt' => 'int',
-        'answers' => 'OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]'
+        'answers' => 'OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerTextEntrySelfScoreAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]'
     ];
 
     /**
@@ -642,7 +642,7 @@ class AssesmentItemEvent implements ModelInterface, ArrayAccess
     /**
      * Gets answers
      *
-     * @return OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]|null
+     * @return OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerTextEntrySelfScoreAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]|null
      */
     public function getAnswers()
     {
@@ -652,7 +652,7 @@ class AssesmentItemEvent implements ModelInterface, ArrayAccess
     /**
      * Sets answers
      *
-     * @param OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]|null $answers Answers given by the student
+     * @param OneOfSingleSelectAnswerMultipleSelectAnswerDrawingAnswerTextEntryAnswerTextEntrySelfScoreAnswerGapMatchAnswerGraphicGapMatchAnswerCoupleAssociateAnswerAcrosticPuzzleAnswerOpenQuestionAnswerGraphicHotspotAnswerGraphicAssociateAnswerSequencingAnswerInlineChoiceAnswerSingleChoiceMatrixAnswerMultipleChoiceMatrixAnswerTextHighlightAnswer[]|null $answers Answers given by the student
      *
      * @return $this
      */

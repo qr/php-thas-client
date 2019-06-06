@@ -117,6 +117,7 @@ Class | Method | HTTP request | Description
  - [SingleChoiceMatrixAnswer](docs/Model/SingleChoiceMatrixAnswer.md)
  - [SingleSelectAnswer](docs/Model/SingleSelectAnswer.md)
  - [TextEntryAnswer](docs/Model/TextEntryAnswer.md)
+ - [TextEntrySelfScoreAnswer](docs/Model/TextEntrySelfScoreAnswer.md)
  - [TextHighlightAnswer](docs/Model/TextHighlightAnswer.md)
  - [ToolUseEvent](docs/Model/ToolUseEvent.md)
  - [ViewEvent](docs/Model/ViewEvent.md)
